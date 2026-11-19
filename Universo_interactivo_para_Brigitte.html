@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#120d24">
+<title>Un universo para Brigitte ✨</title>
+<style>
+:root{--bg:#100c20;--pink:#f2b8d0;--lav:#d9c3ff;--gold:#f7dfa1;--white:#fff8ff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--white);font-family:Georgia,serif;background:radial-gradient(ellipse at 15% 12%,#59335f 0,transparent 35%),radial-gradient(ellipse at 85% 45%,#402650 0,transparent 35%),linear-gradient(145deg,#0c0b19,#21122d 58%,#100d20);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;background-image:radial-gradient(1px 1px at 10% 20%,white 98%,transparent),radial-gradient(2px 2px at 75% 12%,#f4d8ff 98%,transparent),radial-gradient(1px 1px at 40% 75%,white 98%,transparent),radial-gradient(1px 1px at 90% 82%,#f7d8a5 98%,transparent);background-size:240px 220px;z-index:0}
+main{position:relative;z-index:1;max-width:900px;margin:auto;padding:18px 16px 70px}
+button{font:inherit;color:var(--white);border:1px solid #e9c9f477;background:#ffffff12;border-radius:999px;padding:12px 18px;cursor:pointer;backdrop-filter:blur(8px);transition:.22s}
+button:hover{background:#ffffff28;transform:translateY(-2px)}
+button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:45px 10px;position:relative}
+.kicker,.eyebrow{font:11px Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+h1{font-size:clamp(43px,10vw,82px);font-weight:normal;line-height:1.03;margin:18px 0;text-shadow:0 0 30px #dba9ff65}
+h1 span{color:var(--pink);font-style:italic}
+.hero p{max-width:530px;line-height:1.8;color:#f0e2f3;font-size:17px}
+.flower{font-size:45px;filter:drop-shadow(0 0 15px #e8b8ff66);animation:float 4s ease-in-out infinite}
+.primary{background:linear-gradient(120deg,#966ca8,#bd789d);border:0;box-shadow:0 8px 30px #bd789d44}
+section{margin:25px 0;padding:clamp(22px,5vw,38px);border:1px solid #e7c5ef30;border-radius:25px;background:linear-gradient(145deg,#ffffff13,#ffffff07);box-shadow:0 18px 60px #00000022;backdrop-filter:blur(8px)}
+h2{font-size:clamp(27px,6vw,39px);font-weight:normal;text-align:center;color:var(--lav);margin:8px 0 12px}
+.intro{text-align:center;line-height:1.7;color:#e8d9eb;max-width:610px;margin:0 auto 20px}
+.center{text-align:center}
+.small{font:11px Arial,sans-serif;letter-spacing:.16em;color:#d9c3df;text-transform:uppercase}
+.gamebox{position:relative;min-height:290px;border:1px solid #e7c5ef3b;border-radius:20px;background:radial-gradient(ellipse at center,#64466f88,#21172eaa 70%);overflow:hidden;margin-top:20px;touch-action:manipulation}
+.gamehint{text-align:center;color:#f4e6f4;line-height:1.6;padding:15px 10px 0}
+.star{position:absolute;border:0;background:transparent;padding:4px;font-size:30px;line-height:1;filter:drop-shadow(0 0 10px #f7dfa1);animation:twinkle 1.5s infinite alternate;cursor:pointer}
+.star:hover{transform:scale(1.3)}
+.score{font:13px Arial,sans-serif;color:var(--gold);text-align:center;margin:12px}
+.result{display:none;text-align:center;padding:20px 10px;line-height:1.7;color:#ffe8f2;font-size:18px}
+.result.show{display:block;animation:pop .6s ease}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.flip{min-height:145px;border-radius:18px;border:1px solid #e7c5ef45;background:linear-gradient(145deg,#51375f,#291a3d);padding:14px 10px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.5;color:#fff0fa}
+.flip .back{display:none;color:#ffe0ec}
+.flip.open .front{display:none}.flip.open .back{display:block}
+.garden{display:flex;justify-content:center;align-items:center;gap:10px;min-height:90px;flex-wrap:wrap;font-size:30px;margin:10px}
+.garden span{display:inline-block;animation:grow .5s ease both}
+.note{font-size:13px;color:#cdbbd3;line-height:1.6;text-align:center}
+.finalmsg{display:none;text-align:center;color:#ffe7f2;line-height:1.8;font-size:18px;margin:18px auto 0;max-width:580px}
+.finalmsg.show{display:block;animation:pop .6s ease}
+footer{text-align:center;color:#d7c3df;padding:35px 10px;line-height:1.8}
+footer b{color:var(--pink);font-weight:normal}
+.petal{position:fixed;top:-30px;z-index:0;pointer-events:none;animation:fall linear forwards;opacity:.8}
+.spark{position:absolute;color:var(--gold);animation:twinkle 2s infinite alternate}
+@keyframes fall{to{transform:translate3d(var(--drift),110vh,0) rotate(560deg);opacity:.1}}
+@keyframes float{50%{transform:translateY(-12px) rotate(4deg)}}
+@keyframes twinkle{to{opacity:.3;transform:scale(.75)}}
+@keyframes pop{from{opacity:0;transform:scale(.94) translateY(8px)}to{opacity:1;transform:none}}
+@keyframes grow{from{transform:scale(0)}to{transform:scale(1)}}
+@media(max-width:600px){.cards{grid-template-columns:1fr}.flip{min-height:100px}.gamebox{min-height:320px}}
+@media(prefers-reduced-motion:reduce){*,*:before{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+  <div class="kicker">Un pequeño universo hecho para ti</div>
+  <div class="flower">🪻 ✨ 🌹</div>
+  <h1>Feliz cumpleaños,<br><span>Brigitte</span></h1>
+  <p>Mi amor, sé que este día no siempre es tu favorito. No tienes que celebrarlo de ninguna forma especial. Solo quería dejarte un rinconcito bonito, con pequeñas sorpresas hechas para ti.</p>
+  <button class="primary" onclick="document.getElementById('juego').scrollIntoView({behavior:'smooth'})">Entrar a tu pequeño universo ✨</button>
+  <div class="spark" style="top:20%;left:12%;font-size:20px">✧</div><div class="spark" style="top:28%;right:12%;font-size:15px">✦</div>
+</header>
+
+<section id="juego">
+  <div class="small center">PRIMERA SORPRESA · UN JUEGUITO</div>
+  <h2>Encuentra las 5 estrellas</h2>
+  <p class="intro">Se escondieron por este cielo solo para ti. Toca cada estrella que encuentres y descubre qué aparece al reunirlas todas.</p>
+  <div class="score" id="score">Estrellas encontradas: 0 de 5</div>
+  <div class="gamebox" id="gamebox" aria-label="Juego para encontrar cinco estrellas">
+    <div class="gamehint" id="gamehint">Busca las estrellitas brillantes y tócalas. 🌟</div>
+  </div>
+  <div class="result" id="win">¡Las encontraste todas! ✨<br><span style="font-size:15px">Ojalá la vida te regale muchísimas razones para brillar, mi niña. 🩶</span></div>
+  <div class="center"><button id="reset" style="margin-top:12px">Volver a jugar ↻</button></div>
+</section>
+
+<section>
+  <div class="small center">SEGUNDA SORPRESA · MENSAJES ESCONDIDOS</div>
+  <h2>Abre una florecita</h2>
+  <p class="intro">Cada flor guarda unas palabras. Puedes abrirlas en el orden que quieras.</p>
+  <div class="cards">
+    <button class="flip" aria-expanded="false"><span class="front">🌷<br>Una cosita</span><span class="back">No tienes que fingir felicidad hoy. Puedes vivir este día a tu manera, mi amor.</span></button>
+    <button class="flip" aria-expanded="false"><span class="front">🪻<br>Un deseo</span><span class="back">Que este nuevo año te acerque a todo aquello que te haga bien y te dé paz.</span></button>
+    <button class="flip" aria-expanded="false"><span class="front">🌹<br>Un recuerdo</span><span class="back">Gracias por las cosas bonitas que has dejado en mi vida, incluso sin darte cuenta.</span></button>
+  </div>
+</section>
+
+<section>
+  <div class="small center">TERCERA SORPRESA · HAZLO FLORECER</div>
+  <h2>Un jardín para ti</h2>
+  <p class="intro">Toca el botón y vamos llenando este pequeño jardín de flores. 🌱</p>
+  <div class="garden" id="garden" aria-live="polite"><span>🌱</span></div>
+  <div class="center"><button class="primary" id="bloom">Hacer florecer 🌸</button></div>
+  <p class="note" id="gardenNote">Todavía queda espacio para muchas flores.</p>
+</section>
+
+<section class="center">
+  <div class="small">Y UNA ÚLTIMA COSITA, MI AMOR</div>
+  <h2>Un deseo para tu nuevo año</h2>
+  <p class="intro">No voy a pedirte que ames tu cumpleaños. Solo quiero desearte algo bonito.</p>
+  <button class="primary" id="wishBtn">Descubrir mi deseo para ti ✨</button>
+  <p class="finalmsg" id="wish">Que nunca te falten calma para los días difíciles, motivos sinceros para sonreír y personas que sepan cuidar tu corazón. Y si hoy solo quieres un día tranquilo, ojalá este pequeño detalle consiga hacerlo un poquito más bonito. Feliz cumpleaños, mi niña. Te quiero muchísimo. 🩶</p>
+</section>
+
+<footer>Hecho con cariño, especialmente para ti.<br><b>Para Brigitte, con mucho amor. 🐺🩶✨</b></footer>
+</main>
+<script>
+const box=document.getElementById('gamebox'),score=document.getElementById('score'),win=document.getElementById('win'),hint=document.getElementById('gamehint');
+let found=0;
+function makeStars(){
+  box.querySelectorAll('.star').forEach(x=>x.remove());found=0;win.classList.remove('show');score.textContent='Estrellas encontradas: 0 de 5';hint.style.display='block';
+  const spots=[[12,28],[76,24],[45,57],[19,75],[82,73]];
+  spots.forEach((pos,i)=>{const s=document.createElement('button');s.className='star';s.textContent='✦';s.setAttribute('aria-label','Estrella escondida '+(i+1));s.style.left=pos[0]+'%';s.style.top=pos[1]+'%';s.addEventListener('click',()=>{if(s.dataset.found)return;s.dataset.found='yes';s.textContent='✨';s.style.opacity='.25';s.style.pointerEvents='none';found++;score.textContent='Estrellas encontradas: '+found+' de 5';if(found===5){hint.style.display='none';win.classList.add('show')}});box.appendChild(s)});
+}
+document.getElementById('reset').addEventListener('click',makeStars);makeStars();
+document.querySelectorAll('.flip').forEach(card=>card.addEventListener('click',()=>{card.classList.toggle('open');card.setAttribute('aria-expanded',card.classList.contains('open')?'true':'false')}));
+const garden=document.getElementById('garden'),note=document.getElementById('gardenNote');let blooms=0;const flowers=['🌸','🌷','🪻','🌹','🌼','💐','🌺'];
+document.getElementById('bloom').addEventListener('click',()=>{if(blooms<18){const f=document.createElement('span');f.textContent=flowers[blooms%flowers.length];garden.appendChild(f);blooms++;note.textContent=blooms===18?'¡Mira qué jardín tan bonito! Todas estas flores son para ti. 🩶':'Has hecho florecer '+blooms+' de 18 flores.'}else{note.textContent='¡El jardín ya está lleno de flores para ti! 🩶'}});
+document.getElementById('wishBtn').addEventListener('click',()=>{const w=document.getElementById('wish');w.classList.toggle('show');document.getElementById('wishBtn').textContent=w.classList.contains('show')?'Guardar mi deseo':'Descubrir mi deseo para ti ✨'});
+function petals(){const p=document.createElement('div');p.className='petal';p.textContent=['🌸','🪻','✧','🌹','💜'][Math.floor(Math.random()*5)];p.style.left=Math.random()*100+'vw';p.style.fontSize=(12+Math.random()*15)+'px';p.style.setProperty('--drift',(Math.random()*160-80)+'px');p.style.animationDuration=(8+Math.random()*9)+'s';document.body.appendChild(p);setTimeout(()=>p.remove(),18000)}
+setInterval(petals,1100);
+</script>
+</body></html>
